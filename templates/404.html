@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Page Not Found | Chai &amp; Chapter Café{% endblock %}
+{% block description %}Sorry, we could not find that page. Head back to the Chai &amp; Chapter Café home page.{% endblock %}
+{% block og_title %}Page Not Found{% endblock %}
+{% block og_description %}Page not found.{% endblock %}
+{% block robots %}<meta name="robots" content="noindex, follow">{% endblock %}
+{% block content %}
+<section class="container section">
+  <h1>Page not found</h1>
+  <p>That page does not exist. Try the <a href="{% url 'home' %}">home page</a> or read our <a href="{% url 'blog_list' %}">blog</a>.</p>
+</section>
+{% endblock %}

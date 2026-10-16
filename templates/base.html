@@ -1,0 +1,49 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ page.meta_title }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ page.meta_description }}{% endblock %}">
+  <link rel="canonical" href="{{ request.build_absolute_uri }}">
+  {% block robots %}{% endblock %}
+  <meta property="og:title" content="{% block og_title %}{{ page.meta_title }}{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}{{ page.meta_description }}{% endblock %}">
+  <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+  <meta property="og:url" content="{{ request.build_absolute_uri }}">
+  <meta property="og:site_name" content="Chai &amp; Chapter Café">
+  <meta name="theme-color" content="#8a3b12">
+  <link rel="icon" href="{% static 'img/favicon.svg' %}" type="image/svg+xml">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  {% block schema %}{% endblock %}
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container bar">
+    <a class="logo" href="{% url 'home' %}">Chai &amp; Chapter</a>
+    <nav aria-label="Main navigation">
+      {% with current=request.resolver_match.url_name %}
+      <a href="{% url 'home' %}"{% if current == 'home' %} aria-current="page"{% endif %}>Home</a>
+      <a href="{% url 'about' %}"{% if current == 'about' %} aria-current="page"{% endif %}>About</a>
+      <a href="{% url 'blog_list' %}"{% if current == 'blog_list' or current == 'post_detail' %} aria-current="page"{% endif %}>Blog</a>
+      {% endwith %}
+    </nav>
+  </div>
+</header>
+<main id="main">
+{% block content %}{% endblock %}
+</main>
+<footer class="site-footer">
+  <div class="container foot">
+    <address>
+      <strong>Chai &amp; Chapter Café</strong><br>
+      12 Marine Lines Road, Mumbai 400002<br>
+      <a href="tel:+917800144975">+91 7800 1449 75</a>
+    </address>
+    <p>Open daily, 8:00 AM – 11:00 PM</p>
+    <p class="small">&copy; {% now "Y" %} Chai &amp; Chapter Café. A fictional café built for an assignment.</p>
+  </div>
+</footer>
+</body>
+</html>
