@@ -340,6 +340,9 @@ Recommended pages to test:
 Save your homepage screenshot as:
 
 ```text
+### Lighthouse Result (Home Page)
+
+![Lighthouse report for the Home page](lighthouse-home.png)
 lighthouse-home.png
 ```
 
